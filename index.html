@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memes</title>
+    <link rel="stylesheet" href="css/style.css" class="style">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+</head>
+
+<body onload="onInit()">
+    <div class="screen" onclick="toggleMenu()"></div>
+    <div class="screen-modal" onclick="onCloseModal()"></div>
+
+
+    <header>
+        <div class="screen" onclick="toggleMenu()"></div>
+        <nav class="main-nav">
+            <h1 class="logo">MeMes</h1>
+            <div class="main-menu-wrapper">
+                <ul class="main-menu clean-list">
+                    <li>
+                        <a onclick="changeSection('memes', this)" href="#">Saved</a>
+                    </li>
+                    <li>
+                        <a onclick="changeSection('gallery', this)" href="#" class="active">Gallery</a>
+                    </li>
+                    <li>
+                        <a onclick="changeSection('about', this)" href="#">About</a>
+                    </li>
+                </ul>
+                <button class="menu-btn" onclick="toggleMenu()">☰</button>
+            </div>
+        </nav>
+    </header>
+
+
+    <section class="generator-container">
+
+        <div class="canvas-container">
+            <canvas id="my-canvas" height="450" width="450" style="border: 1px solid black;"></canvas>
+        </div>
+
+        <div class="edit-area">
+            <input class="meme-text-input" placeholder="Enter Text" type="text" oninput="onChangeText(this.value)">
+            <button class="gen-btn line-up" onclick="onChangeLocation(-2)">⇡</button>
+            <button class="gen-btn line-down" onclick="onChangeLocation(2)">⇣</button>
+            <button class="gen-btn add-line" onclick="onAddLine()"><img src="icons/add.png" alt=""></button>
+            <button class="gen-btn switch-line" onclick="onSwitchLine()"><img src="icons/switch-line.png"
+                    alt=""></button>
+            <button class="gen-btn clear-line" onclick="onClearLine()"><img src="icons/trash.png" alt=""></button>
+            <button class="gen-btn font-increase-btn" onclick="onChangeFontSize(1)"><img src="icons/increase-font.png"
+                    alt=""></button>
+            <button class="gen-btn font-decrease-btn" onclick="onChangeFontSize(-1)"><img src="icons/decrease-font.png"
+                    alt=""></button>
+            <button class="gen-btn font-align-left" onclick="onAlignLine('right')"><img src="icons/align-left.png"
+                    alt=""></button>
+            <button class="gen-btn font-align-center" onclick="onAlignLine('center')"><img src="icons/align-center.png"
+                    alt=""></button>
+            <button class="gen-btn font-align-right" onclick="onAlignLine('left')"><img src="icons/align-right.png"
+                    alt=""></button>
+            <select class="font-picker" onchange="onSetFont(this.value)">
+                <option class="impact-selector" value="Impact">Impact</option>
+                <option class="arial-selector" value="Arial">Arial</option>
+                <option class="verdana-selector" value="Verdana">Verdana</option>
+            </select>
+            <input type="color" class="gen-btn change-stroke" oninput="onChangeBorder(this.value)"></input>
+            <input type="color" class="gen-btn change-fill" oninput="onChangeColor(this.value)"></input>
+            <button class="gen-btn shares-btn" onclick="onOpenShareModal()">Share</button>
+            <button class="gen-btn done-btn" onclick="onDone()">X</button>
+
+        </div>
+
+        <div class="share-modal">
+            <button class="close-modal-btn" onclick="onCloseModal()">X</button>
+            <div class="share-btns-container">
+                <button class="gen-btn download-btn"><a href="#" onclick="downloadCanvas(this)" download=""><img
+                            src="icons/download-icon.png" alt=""></a></button>
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <input name="img" id="imgData" type="hidden" />
+                    <button class="btn gen-btn pre-share-btn" type="submit"><img src="icons/facebook-logo.png"
+                        alt=""></button>
+                    <div class="share-container"></div>
+                </form>
+                <button class="gen-btn save-btn" onclick="onSaveMeme()"><img src="icons/save.png" alt=""></button>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="gallery-container">
+
+
+
+        <main class="gallery-items">
+
+        </main>
+
+        <section class="paging">
+            <button class="prev" onclick="onChangePage(-1)">Previous</button>
+            <button class="next" onclick="onChangePage(1)">Next</button>
+        </section>
+    </div>
+
+    <section class="about">
+        <img src="img/me.jpg">
+        <div class="details">
+            <h3>Hello There!</h3>
+            <p>
+                Created this Generator for CA sprint 2, after four days of work Im simutanusley Proud and Shy to represnt
+                my very own Generator. I think this is the perfect time to admit that its the first time 
+                I use the word "Simutanusley" and to admit that all this pragarph was written
+                to fill this page with words, if my lecturers wouldn't be mad at me i'd write "Lorem Impsum". Thats all,
+                 Hope You'll enjoy :)
+            </p>
+        </div>
+    </section>
+
+    <section class="memes-gallery">
+        <div class="memes-container"></div>
+    </section>
+
+
+    <footer>
+        <div class="logo">MeMes</div>
+        <small>© 2020 CoffeRights - Made By Ran Zalmon</small>
+    </footer>
+</body>
+<script src="js/storage-service.js"></script>
+<script src="js/upload-service.js"></script>
+<script src="js/service.js"></script>
+<script src="js/main.js"></script>
+
+</html>
