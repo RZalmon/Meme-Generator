@@ -297,6 +297,12 @@ header {
 .close-modal-btn {
     align-self: flex-end;
     cursor: pointer;
+    transition: .3s;
+    border-radius: 12px;
+}
+
+.close-modal-btn:hover {
+    background-color: #bf9dfa;
 }
 
 .gen-btn.share-btn {
@@ -362,12 +368,7 @@ header {
 .memes-container img {
     width: 350px;
     border: 1px solid black;
-    transition: .3s;
-}
-
-.memes-container img:hover {
-    width: 375px;
-    border: 1px solid black;
+    cursor: default;
     transition: .3s;
 }
 
