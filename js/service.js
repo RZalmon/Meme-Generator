@@ -149,7 +149,7 @@ function createMeme(imgId) {
 function createImgs() {
 
 
-    var imgs = [['Trump'], ['Puppies'], ['Sleep'], ['cat'], ['Success'], ['Aliens'], ['Baby'], ['Sarcastic'], ['Evil'],
+    var imgs = [['Trump'], ['Puppies'], ['Sleep'], ['Cat'], ['Success'], ['Aliens'], ['Baby'], ['Sarcastic'], ['Evil'],
     ['Obama'], ['Pride'], ['Social Test'], ['Cheers'], ['Matrix'], ['LOTR'], ['Spock'], ['Putin'], ['Toy Story']].map(createImg);
     return imgs
 }

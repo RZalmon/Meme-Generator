@@ -3,6 +3,7 @@ var gCanvas;
 var gCtx;
 var gIsMemeReady;
 
+
 function onInit() {
     init();
     gCanvas = document.getElementById('my-canvas');
@@ -143,7 +144,6 @@ function renderMemes() {
 
 function renderMeme() {
     var meme = getMeme();
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
     var img = new Image()
     img.src = `./img-square/${meme.selectedImgId}.jpg`;
     img.onload = () => {
@@ -151,7 +151,7 @@ function renderMeme() {
         meme.lines.forEach(line => {
             var textToDisplay = line.txt;
             gCtx.font = `${line.size}px ${line.font}`;
-            gCtx.lineWidth = '1';
+            gCtx.lineWidth = '2';
             gCtx.strokeStyle = line.border;
             gCtx.fillStyle = line.color;
             gCtx.textAlign = line.align;
